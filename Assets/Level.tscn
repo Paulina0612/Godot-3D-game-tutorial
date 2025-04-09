@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Steve.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Steve.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Env.tres" type="Environment" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -10,11 +11,11 @@
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 15, 1, 15 )
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.235294, 0.486275, 0.333333, 1 )
 
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 5 )
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
 size = Vector3( 30, 2, 30 )
 
 [node name="Level" type="Spatial"]
@@ -30,21 +31,32 @@ transform = Transform( 1, -7.45058e-009, 0, -2.23517e-008, 1, 0, -5.96046e-008, 
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.962685, 0.270625, 0, -0.270625, 0.962685, -3.55335, 8.53743, 25.5109 )
-
 [node name="Floor" type="StaticBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+transform = Transform( 0.999994, 0.0031751, -0.000984557, -0.00317463, 0.999995, 0.000478903, 0.000986079, -0.000475762, 0.999999, 0, -1, 0 )
 shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Steve" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.929389, 5.24568 )
 script = ExtResource( 2 )
+
+[node name="CameraTarget" type="Spatial" parent="Steve"]
+transform = Transform( 0.999958, 0.00916907, 0, -0.00842959, 0.919312, 0.393439, 0.00360747, -0.393422, 0.919351, 0.379479, 5.52428, 12.9506 )
+
+[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.996107, 0.0881538, 0, -0.0881538, 0.996107, 0, 13.2415, 27.649 )
+environment = ExtResource( 3 )
+target = NodePath("../Steve/CameraTarget")
+speed = 5.0
+enabled = true
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.879764, 0.474798, 0.0241446, -0.0924305, -0.220642, 0.970965, 0.46634, 0.851988, 0.237999, 0.432747, 7.62498, -0.170811 )
+shadow_enabled = true
 
