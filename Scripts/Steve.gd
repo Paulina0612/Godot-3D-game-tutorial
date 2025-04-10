@@ -36,3 +36,8 @@ func _physics_process(delta):
 		velocity.z = 0
 		
 	move_and_slide(velocity)
+
+func _on_enemy_body_entered(body):
+	if body.name == "Steve":
+		get_tree().change_scene("res://Assets/GameOver.tscn")
+
