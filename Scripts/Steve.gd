@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var velocity = Vector3(0,0,0)
-const SPEED = 6
+const SPEED = 8
 const ANGLE = deg2rad(8)
 
 func _ready():
