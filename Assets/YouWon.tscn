@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/ThatNogoFontCasual.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Fonts/Redkost Comic.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://Assets/try_again_button.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/button_menu_play.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -15,41 +15,40 @@ font_data = ExtResource( 2 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 2.86395
-margin_bottom = 2.86395
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 724, 400 )
+margin_right = 724.0
+margin_bottom = 400.0
 color = Color( 0.815686, 0.615686, 0.894118, 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 2.3327
-margin_top = 58.4896
-margin_right = 726.333
-margin_bottom = 208.49
-rect_min_size = Vector2( 724, 150 )
+margin_left = 1.58667
+margin_top = 83.4487
+margin_right = 725.587
+margin_bottom = 266.449
+rect_min_size = Vector2( 724, 0 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.239216, 0, 0.290196, 1 )
 custom_colors/font_color_shadow = Color( 0.784314, 0.556863, 0.556863, 1 )
 custom_constants/shadow_offset_x = 6
 custom_constants/shadow_offset_y = 6
-text = "Game Over"
+text = "You Won!
+
+"
 align = 1
 valign = 1
 
-[node name="try_again_button" type="Button" parent="."]
-margin_left = 212.68
-margin_top = 225.241
-margin_right = 528.68
-margin_bottom = 295.241
+[node name="button_menu_play" type="Button" parent="."]
+margin_left = 200.822
+margin_top = 215.89
+margin_right = 537.822
+margin_bottom = 285.89
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.4, 0.0588235, 0.298039, 1 )
 custom_colors/font_color_hover = Color( 0.262745, 0.027451, 0.192157, 1 )
 custom_colors/font_color_pressed = Color( 0.262745, 0.027451, 0.192157, 1 )
-text = "Try again"
+text = "Play Again"
 flat = true
 script = ExtResource( 3 )
 
-[connection signal="pressed" from="try_again_button" to="try_again_button" method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="button_menu_play" to="button_menu_play" method="_on_button_menu_play_pressed"]
